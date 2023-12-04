@@ -3,8 +3,8 @@ package Es3;
 import exception.BancaException;
 
 public class ContoCorrente {
-    private final int maxMovimenti = 50;
-    private String titolare;
+     final int maxMovimenti = 50;
+     String titolare;
     int nMovimenti;
     double saldo;
 
@@ -18,6 +18,12 @@ public class ContoCorrente {
         if (nMovimenti < maxMovimenti)
             saldo = saldo - money;
         else saldo = saldo - money - 0.50;
-
+        nMovimenti++;
+        if (saldo < 0) throw new BancaException("il conto è in rosso");
     }
+
+    public  double restituisciSaldo(){
+        return saldo;
+    }
+
 }
